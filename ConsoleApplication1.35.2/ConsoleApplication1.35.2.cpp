@@ -11,7 +11,7 @@ using namespace std;
 
 //auto uniqueValies = [](vector<int>vr) {
 //    unordered_set<int> v;
- //   v.insert(vr.begin(), vr.end());
+ //   v.insert(vr.begin(), vr.end());         второй вариант решения    
   //  unique_ptr<unordered_set<int>> ptr;
  //   return v;
 //};
@@ -38,27 +38,6 @@ int main()
       for (auto item : lamda_result) {
           cout << item << " ";
       }
-
-
-
-//	vector< int > v = { 2, 4, 5, 6, 7, 9, 11, 14,2, 6, 3, 7, 4, 1, 1 };
-//	auto end = remove_if(v.begin(), v.end(), [](int x) { return x <9; });
-//	for_each(v.begin(), end, [](int x) { std::cout << x << " "; });
-
-  //  std::vector<int> numbers{  };
-    // Фильтруем элементы, перемещая уцелевшие элементы в начало массива
-  //  auto newEnd = std::remove_if(numbers.begin(), numbers.end(), [](int num) {
-   //     return num > 3;
-  //      });
-    // Удаляем все элементы, следующие после
- //   numbers.erase(newEnd, numbers.end());
- //   for (int num : numbers)
-     
-  //  {
-//   cout << " (";
- //       std::cout << num;
- //       cout << ") ";
- //   }
       return 0;
 }
 
