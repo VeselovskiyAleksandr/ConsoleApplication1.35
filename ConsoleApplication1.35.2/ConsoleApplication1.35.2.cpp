@@ -2,39 +2,27 @@
 //Урок 35. Задача 2.
 
 #include <iostream>
-#include <memory>
 #include <vector>
-#include<algorithm>
 #include <unordered_set>
 #include <map>
 using namespace std;
 
-//auto uniqueValies = [](vector<int>vr) {
-//    unordered_set<int> v;
- //   v.insert(vr.begin(), vr.end());         второй вариант решения    
-  //  unique_ptr<unordered_set<int>> ptr;
- //   return v;
-//};
-
 int main()
 {
     vector<int> vect= { 2, 4, 5, 6, 7, 9, 11, 14, 2, 6, 3, 7, 4, 1, 1 };
-    map<int, int> itemCount;
-  //  for (auto item : vect)
-    //{                         цикл отавил для примера       
-      //  ++itemCount[item];
-    //}
       auto result=[](vector<int> vect) {
+    map<int, int> itemCount;
+    for (auto val : vect)
+        ++itemCount[val];
+    for (auto item : itemCount)
+        cout<<" Value: " << item.first << " "<<"   number of repetitions: " << item.second << "\n";
+             cout  << "\n ";
             unordered_set<int> v;
-  //  auto result = uniqueValies(vect);
- //   for (auto item : result) {             второй вариант решения
- //       cout << item << " ";
-  //  }
             v.insert(vect.begin(), vect.end());
- 
             return v;
         };
       auto lamda_result = result(vect);
+          cout << "List of unique values: ";
       for (auto item : lamda_result) {
           cout << item << " ";
       }
