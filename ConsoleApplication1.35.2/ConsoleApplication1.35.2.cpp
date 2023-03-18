@@ -5,27 +5,31 @@
 #include <vector>
 #include <unordered_set>
 #include <map>
+#include<memory>
 using namespace std;
 
 int main()
 {
     vector<int> vect= { 2, 4, 5, 6, 7, 9, 11, 14, 2, 6, 3, 7, 4, 1, 1 };
-      auto result=[](vector<int> vect) {
-    map<int, int> itemCount;
-    for (auto val : vect)
-        ++itemCount[val];
-    for (auto item : itemCount)
-        cout<<" Value: " << item.first << " "<<"   number of repetitions: " << item.second << "\n";
-             cout  << "\n ";
-            unordered_set<int> v;
-            v.insert(vect.begin(), vect.end());
-            return v;
-        };
+      auto result=[](vector<int> vect)
+      {
+      map<int, int> itemCount;
+      for (auto item : vect)
+          ++itemCount[item];
+      for (auto item : itemCount)
+          cout << " Value: " <<item.first << " " << "   number of repetitions: " << item.second << "\n";
+      unique_ptr<vector <int>>ptr(new vector<int>{});
+      unordered_set<int> v;
+      v.insert(vect.begin(), vect.end());
+      for (auto i = v.begin(); i != v.end(); ++i) 
+          ptr->push_back(*i);
+      cout << "\n ";
+            return *ptr;
+      };
       auto lamda_result = result(vect);
           cout << "List of unique values: ";
-      for (auto item : lamda_result) {
+      for (auto item : lamda_result) 
           cout << item << " ";
-      }
       return 0;
 }
 
