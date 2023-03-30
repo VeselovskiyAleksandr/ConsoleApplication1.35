@@ -1,18 +1,43 @@
-﻿// ConsoleApplication1.35.3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// ConsoleApplication1.35.3.1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //Урок 35. Задача 3.
 
 #include <iostream>
 #include <filesystem>
 #include <string>
-#include <sstream>
+#include <vector>
 using namespace std;
-int main(){
-filesystem::path p("C:\\Users\\Александр\\Documents\\text for program\\data.txt");
-	for (auto& p : fs::recursive_directory_iterator("C:\\Users\\Александр\\Documents\\text for program\\data.txt"))
-		cout << p.path() << '\n';
-filesystem::space(p);
-}
 
+int main()
+{
+	const string extension = ".png";
+auto recursiveGetFileNamesByExtension = [](filesystem::path p, const string extension){
+		unique_ptr<vector <filesystem::directory_entry>>ptr(new vector<filesystem::directory_entry>{});
+		for (auto& p : filesystem::recursive_directory_iterator("C:\\Users\\Александр\\Documents\\text for program"))
+		{
+			if (filesystem::path(p).extension() == extension) {
+				ptr->push_back(p);
+			}
+		}
+		return *ptr;
+	};
+	filesystem::path p("C:/Users/Александр/Documents/text for program");
+	for (auto& p : filesystem::recursive_directory_iterator("C:\\Users\\Александр\\Documents\\text for program"))
+	{
+		if (filesystem::is_regular_file(p)) {
+			cout<<p << "\n" << " It's file; extension: " << filesystem:: path(p).extension()<<"\n";
+
+		}
+		else {
+			cout << "It's catalog" << "\n";
+		}
+	}
+			recursiveGetFileNamesByExtension(p, extension);
+			cout << "\n" <<"Files with the extension .png: " << "\n";
+	auto result= recursiveGetFileNamesByExtension(p, extension);
+		for(auto it: result)
+			cout << it << " " << "\n";
+	return 0;
+}
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"

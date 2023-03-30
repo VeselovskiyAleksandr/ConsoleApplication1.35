@@ -1,18 +1,18 @@
-﻿// ConsoleApplication1.35.3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//Урок 35. Задача 3.
+﻿// ConsoleApplication1.35.3.2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
 
 #include <iostream>
 #include <filesystem>
 #include <string>
 #include <sstream>
 using namespace std;
-int main(){
-filesystem::path p("C:\\Users\\Александр\\Documents\\text for program\\data.txt");
+int main()
+{
+	filesystem::path p("C:\\Users\\Александр\\Documents\\text for program\\data.txt");
 	for (auto& p : fs::recursive_directory_iterator("C:\\Users\\Александр\\Documents\\text for program\\data.txt"))
 		cout << p.path() << '\n';
-filesystem::space(p);
+		filesystem::space(p);
 }
-
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
